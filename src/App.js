@@ -3,6 +3,8 @@ import { Header } from './components/Header/Header';
 import { useEffect, useState } from 'react';
 import fetchAllGames from './components/services/fetchAllGames';
 import AllGames from './components/Games/AllGames';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './routes/Routes';
 
 function App() {
 
@@ -21,7 +23,12 @@ function App() {
   },[]);
 
   return (
-    <div className="App">      
+    <div className="App">
+      <BrowserRouter>
+      <Router />
+      </BrowserRouter>
+
+
       <Header />                      
 
       <section id="listGames">        
