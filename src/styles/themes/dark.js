@@ -3,10 +3,10 @@ export default {
 
     colors: {
         primary: '#33312e',
-        secundary: '#6b5e62',
-        background: '#474044',
+        secundary: '#bbb193',
+        background: '#131b23',
         switchOn: '##FFF4EC',
         switchOff: '##FFF4EC',
-        text: '#333',
+        text: '#e7dfc6',
     },
 };

@@ -45,11 +45,11 @@ const Header = ({toggleTheme}) => {
                 activeBoxShadow
                 height={15}
                 width={45}                
-                handleDiameter={20}
-                onHandleColor={colors.switchOn}
-                offHandleColor={colors.switchOff}
-                onColor=""
-                offColor=""
+                handleDiameter={25}
+                onHandleColor={colors.secundary}
+                offHandleColor={colors.secundary}
+                onColor={colors.switchOn}
+                offColor={colors.secundary}
                 
             />
         </Container>
