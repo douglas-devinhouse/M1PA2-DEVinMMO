@@ -1,19 +1,31 @@
 import './App.css';
-import { Header } from './components/Header/Header';
-//import { useEffect, useState } from 'react';
-
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './routes/Routes';
 
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./styles/GlobalStyles";
+import Header from "./components/Header";
+import ligth from "./styles/themes/ligth";
+import dark from "./styles/themes/dark";
+import usePersistedState from "./utils/usePersistedState";
+
 function App() {
+  const [theme, setTheme] = usePersistedState('theme', ligth);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'ligth' ? dark : ligth);
+  }
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
-      <Header />
-      <BrowserRouter>
-      <Router />
-      </BrowserRouter>
-    </div>
+        <GlobalStyles />
+        <Header toggleTheme={toggleTheme}/>
+        <BrowserRouter>
+        <Router />
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 
