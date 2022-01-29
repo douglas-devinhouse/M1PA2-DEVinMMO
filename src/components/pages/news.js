@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import AllNews from "../News/AllNews";
-import fetchAllNews from "../services/fetchAllNews";
+import fetchAllNews from "../../services/fetchAllNews";
 
 
 export const News = () => {

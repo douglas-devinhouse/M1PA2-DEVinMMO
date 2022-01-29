@@ -1,16 +1,27 @@
-import React, { useContext } from "react";
-import Switch from "react-switch";
+import React, { useContext } from 'react';
+//import Switch from "react-switch";
 import {Container} from './styles';
-import { ThemeContext } from "styled-components";
+//import { ThemeContext } from 'styled-components';
+import { useGame } from '../../contexts/game/useGame';
 
-const Header = ({toggleTheme}) => {
-    const { colors, title } = useContext(ThemeContext);
+export const Header = ({toggleTheme}) => {
+  //  const { colors, title } = useContext(ThemeContext);
+    const { setTermoBusca } = useGame();
 
     return (
         <Container>
             <h3>Theme Switcher usando "styled-components"</h3>
+            <div>
+              <input
+                onChange={(event) => {
+                  setTermoBusca(event.target.value);
+                }}                
+                type="text"
+                placeholder="Digite o nome do game"
+              />
+            </div>
            
-            <Switch 
+            {/* <Switch 
                 onChange={toggleTheme}
                 checked={title === 'dark'}
                 checkedIcon={false}
@@ -51,9 +62,7 @@ const Header = ({toggleTheme}) => {
                 onColor={colors.switchOn}
                 offColor={colors.secundary}
                 
-            />
+            /> */}
         </Container>
     )
 };
-
-export default Header;

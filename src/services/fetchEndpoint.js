@@ -1,5 +1,5 @@
 
-export const fecthEndPoint = async (endPoint) => {
+const fetchEndPoint = async (endPoint) => {
     try {
         const response = await fetch(`${process.env.REACT_APP_API_URL_BASE}${endPoint}`, {
             method: 'GET',
@@ -14,3 +14,5 @@ export const fecthEndPoint = async (endPoint) => {
         console.log(erro.message);
     }
 };
+
+export default fetchEndPoint;

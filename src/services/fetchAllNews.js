@@ -1,13 +1,15 @@
-import { fecthEndPoint } from "./fetchEndpoint";
+import fetchEndPoint from "./fetchEndpoint";
 
-export default {
+const fetchAllNews = {
     getAllNews: async () => {
         return [
             {
                 slug: 'allNews',
                 title: 'Todos as notícias',
-                items: await fecthEndPoint(`/latestnews`)
+                items: await fetchEndPoint(`/latestnews`)
             }
         ];
     }
-}
+};
+
+export default fetchAllNews;
