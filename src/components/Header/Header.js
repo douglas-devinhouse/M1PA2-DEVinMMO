@@ -1,23 +1,31 @@
-import React, { useContext } from 'react';
+import React from 'react';
 //import Switch from "react-switch";
 import {Container} from './styles';
 //import { ThemeContext } from 'styled-components';
-import { useGame } from '../../contexts/game/useGame';
+import { useGame } from '../../contexts/game';
+import { useNews } from '../../contexts/news';
 
-export const Header = ({toggleTheme}) => {
-  //  const { colors, title } = useContext(ThemeContext);
-    const { setTermoBusca } = useGame();
+export const Header = ({toggleTheme, pageTitle}) => {
+  //  const { colors, title } = useContext(ThemeContext);  
+  const { setTermoBuscaGame } = useGame();      
+  const { setTermoBuscaNews } = useNews();  
 
     return (
         <Container>
-            <h3>Theme Switcher usando "styled-components"</h3>
+            <h1>{pageTitle}</h1>
             <div>
               <input
                 onChange={(event) => {
-                  setTermoBusca(event.target.value);
+                  //setTermoBuscaGame(event.target.value);
+                  //setTermoBuscaNews(event.target.value);
+
+                  pageTitle === 'Games' ?
+                  setTermoBuscaGame(event.target.value):
+                  setTermoBuscaNews(event.target.value);
+                  
                 }}                
                 type="text"
-                placeholder="Digite o nome do game"
+                placeholder="Pesquisar"
               />
             </div>
            

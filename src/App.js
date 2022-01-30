@@ -4,28 +4,31 @@ import { Router } from './routes/Routes';
 
 import { ThemeProvider } from "styled-components";
 import { GameProvider } from './contexts/game';
+import { NewsProvider } from './contexts/news';
 import { GlobalStyles } from "./styles/GlobalStyles";
-import { Header } from "./components/Header/Header";
-import { ligth, dark } from './styles/themes';
+//import { Header } from "./components/Header/Header";
+import { ligth} from './styles/themes';
 import { usePersistedState } from "./utils/usePersistedState";
 
 function App() {
-  const [theme, setTheme] = usePersistedState('theme', ligth);
+   const [theme] = usePersistedState('theme', ligth);
 
-  const toggleTheme = () => {
-    setTheme(theme.title === 'ligth' ? dark : ligth);
-  }
+  // const toggleTheme = () => {
+  //   setTheme(theme.title === 'ligth' ? dark : ligth);
+  // }
 
   return (
     <ThemeProvider theme={theme}>
       <GameProvider >
+      <NewsProvider >
         <div className="App"> 
             <GlobalStyles />
-            <Header toggleTheme={toggleTheme}/>        
+            {/* <Header toggleTheme={toggleTheme}/>*/}
             <BrowserRouter>
               <Router />
             </BrowserRouter>
           </div>
+      </NewsProvider>
       </GameProvider>
     
     </ThemeProvider>

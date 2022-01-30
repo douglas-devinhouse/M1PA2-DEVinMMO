@@ -1,9 +1,7 @@
-import fecthEndPoint from "./fetchEndpoint";
+import fetchEndPoint from "./fetchEndpoint";
 
 export const fetchAllGames = {
   getAllGames: async () => {
-    return await fecthEndPoint(`/games`);
+    return await fetchEndPoint(`/games`);
   }
 };
-
-export default fetchAllGames;

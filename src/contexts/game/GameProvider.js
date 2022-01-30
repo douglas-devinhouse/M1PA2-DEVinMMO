@@ -4,7 +4,7 @@ import { fetchAllGames } from '../../services/fetchAllGames';
 import { GameContext } from './GameContext';
 
 export const GameProvider = ({ children }) => {
-  const [termoBusca, setTermoBusca] = useState('');
+  const [termoBuscaGame, setTermoBuscaGame] = useState('');
   const [gamesFiltrados, setGamesFiltrados] = useState([]);    
   const games = useRef([]);
 
@@ -13,18 +13,18 @@ export const GameProvider = ({ children }) => {
   (async () => {
     const lista = await fetchAllGames.getAllGames();
     games.current = lista;
-    setGamesFiltrados(filtrarListaGamesPorTermoBusca(games.current, termoBusca));        
+    setGamesFiltrados(filtrarListaGamesPorTermoBusca(games.current, termoBuscaGame));        
   })();
   // :)
   //eslint-disable-next-line        
   }, []);
 
   useEffect(() => {        
-    setGamesFiltrados(filtrarListaGamesPorTermoBusca(games.current, termoBusca));
-  },[termoBusca]);
+    setGamesFiltrados(filtrarListaGamesPorTermoBusca(games.current, termoBuscaGame));
+  },[termoBuscaGame]);
 
   return (
-    <GameContext.Provider value={{setTermoBusca, games, gamesFiltrados }}>
+    <GameContext.Provider value={{setTermoBuscaGame, games, gamesFiltrados }}>
       {children}
     </GameContext.Provider>
   );
