@@ -10,12 +10,12 @@ import { MasterHeader } from "./components/Header/MasterHeader";
 import { dark, ligth} from './styles/themes';
 import { usePersistedState } from "./utils/usePersistedState";
 
-function App() {
-   const [theme] = usePersistedState('theme', ligth);
+function App() {   
 
-  // const toggleTheme = () => {
-  //   setTheme(theme.title === 'ligth' ? dark : ligth);
-  // }
+  const [theme, setTheme] = usePersistedState('theme', ligth);
+  const toggleTheme = () => {
+    setTheme(theme.title === 'ligth' ? dark : ligth);
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -23,7 +23,7 @@ function App() {
       <NewsProvider >
         <div className="App"> 
             <GlobalStyles />
-            <MasterHeader />
+            <MasterHeader toggleTheme={toggleTheme}/>
             <BrowserRouter>
               <Router />
             </BrowserRouter>

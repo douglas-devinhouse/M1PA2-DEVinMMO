@@ -4,12 +4,12 @@ import {Container} from './styles';
 import { ThemeContext } from 'styled-components';
 
 export const MasterHeader = ({toggleTheme}) => {
-  const { colors, title } = useContext(ThemeContext);    
+  const { colors, title } = useContext(ThemeContext);     
   
     return (
         <Container>
-            <h1>DEVinMMO - Softplan</h1>
-            {/* <div>
+            <h1>GAMEFLIX</h1>
+            <div>
                 <Switch 
                     onChange={toggleTheme}
                     checked={title === 'dark'}
@@ -51,7 +51,7 @@ export const MasterHeader = ({toggleTheme}) => {
                     offColor={colors.secundary}
                     
                 />
-            </div> */}
+            </div>
         </Container>
     )
 };

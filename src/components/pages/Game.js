@@ -17,7 +17,7 @@ export const Game = () => {
         }, []);   
         console.log(detalhe);
     return(
-        <>            
+        <>                        
             <GameHeader gameTitle={detalhe.title}/>
             <img src={detalhe.thumbnail} alt={detalhe.title}></img>            
             <p>{detalhe.short_description}</p>
