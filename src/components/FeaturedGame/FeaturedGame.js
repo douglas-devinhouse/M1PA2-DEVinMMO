@@ -36,7 +36,7 @@ const FeaturedGame = ({title, developer, releaseDate, genre, description, minReq
             </FeaturedVertical>
         </FeaturedStyle>        
         </>
-    )
-}
+    );
+};
 
 export default FeaturedGame;

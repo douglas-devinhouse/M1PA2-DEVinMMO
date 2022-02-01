@@ -56,7 +56,7 @@ export const FeaturedDescription = styled.div`
 
 export const FeaturedButtom = styled.a`
     cursor: pointer;
-    margin: 15px 0 0 45px;
+    margin: 250px 0 0 45px;
     display: inline-block;
     font-size: 20px;
     font-weight: bold;
@@ -74,7 +74,7 @@ export const FeaturedButtom = styled.a`
 `;
 
 export const FeaturedRequirements = styled.div`
-    margin: 15px 0 0 45px;
+    margin: 150px 0 0 45px;
     font-size: 18px;
     color: #999;
 `;

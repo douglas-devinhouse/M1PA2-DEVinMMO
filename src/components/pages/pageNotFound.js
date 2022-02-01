@@ -1,4 +1,5 @@
+import NotFound from '../../images/404.jpg';
 
 export const PageNotFound = () => {
-    return <img src='../images/404.jpg' alt='Pagina não encontrada'></img>
+    return <img src={NotFound} alt='Pagina não encontrada'></img>
 }

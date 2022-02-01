@@ -5,8 +5,6 @@ import FeaturedGame from './FeaturedGame';
 import { SlideShowStyle } from './SlideShow.styles';
 
 export const SlideShow = ({gameInfo}) => {
-  // if(gameInfo.screenshots) console.log(gameInfo.screenshots);
-  
   let screenchostList = [];
     for(let i in gameInfo.screenshots){
       screenchostList.push(gameInfo.screenshots[i].image);
@@ -20,9 +18,9 @@ export const SlideShow = ({gameInfo}) => {
     <div>
       <SlideShowStyle >            
       <Fade {...fadeProperties}>
-        {screenchostList.map((img, index) => (
+        {screenchostList.length > 0 && screenchostList.map((img, key) => (
           <>
-          <FeaturedGame 
+          <FeaturedGame  
             title={gameInfo.title} 
             developer={gameInfo.developer} 
             releaseDate={gameInfo.release_date}
@@ -31,13 +29,12 @@ export const SlideShow = ({gameInfo}) => {
             minRequirements={gameInfo.minimum_system_requirements}
             gameUrl={gameInfo.game_url}
           />
-          <div key={index} style={{width: "100%"}}>
-            <img alt={`Imagem ${index}`} style={{ objectFit: "cover", width: "100%" }} src={img} />
+          <div style={{width: "100%"}}>
+            <img alt={`Imagem ${key}`} style={{ objectFit: "cover", width: "100%" }} src={img} />
           </div>
           </>
         ))}
-      </Fade>
-      {/* </Zoom> */}
+      </Fade>      
       </SlideShowStyle>
     </div>
   );    

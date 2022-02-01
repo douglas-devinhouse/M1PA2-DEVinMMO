@@ -5,4 +5,5 @@ export const SlideShowStyle = styled.div`
   background-size: cover;
   background-position: center;  
   position: relative;    
+  height: 100px;
 `;
