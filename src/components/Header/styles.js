@@ -9,3 +9,7 @@ export const Container = styled.div`
     padding: 0 30px;
     justify-content: space-between;
 `;
+
+export const MasterHeaderTitle = styled.h1`
+    color: ;
+`;

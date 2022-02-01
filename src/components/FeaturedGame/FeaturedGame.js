@@ -1,16 +1,41 @@
 import React from "react";
-import { FeaturedStyle } from "./FeaturedGame.styles";
-import { SlideShow } from "./SlideShow";
+import { FeaturedHorizontal, FeaturedStyle, FeaturedVertical, FeaturedTitle, 
+         FeaturedInfo, FeaturedDeveloper, FeaturedRelease, FeaturedGenre,
+         FeaturedDescription, FeaturedButtom, FeaturedRequirements } from "./FeaturedGame.styles";
 
-export default ({game}) => {
+const FeaturedGame = ({title, developer, releaseDate, genre, description, minRequirements, gameUrl}) => {
+    let firstRelease = new Date(releaseDate);     
+    
     return (
         <>        
-        <FeaturedStyle>                        
-            <section>            
-                <div><h1>{game.title}</h1></div>
-            </section>
-        </FeaturedStyle>
-        <SlideShow screenshots={game.screenshots}/>
+        <FeaturedStyle>
+            <FeaturedVertical>
+                <FeaturedHorizontal>
+                    <section>
+                    <FeaturedTitle>{title}</FeaturedTitle>
+                        <FeaturedInfo>
+                            <FeaturedDeveloper>{developer}</FeaturedDeveloper>
+                            <FeaturedRelease>{firstRelease.getFullYear()}</FeaturedRelease>
+                            <FeaturedGenre>{genre}</FeaturedGenre>
+                        </FeaturedInfo>
+
+                        <FeaturedDescription>{description}</FeaturedDescription>
+                        <FeaturedButtom href={gameUrl}>Oficial Page</FeaturedButtom>
+                                                
+                        <FeaturedRequirements>
+                            <h3>Minimum System Requirements</h3>
+                            <p>OS: {minRequirements.os}</p>
+                            <p>Graphics: {minRequirements.graphics}</p>
+                            <p>Memory: {minRequirements.memory}</p>
+                            <p>Processor: {minRequirements.processor}</p>
+                            <p>Storage: {minRequirements.storage}</p>
+                        </FeaturedRequirements>
+                    </section>
+                </FeaturedHorizontal>
+            </FeaturedVertical>
+        </FeaturedStyle>        
         </>
     )
 }
+
+export default FeaturedGame;

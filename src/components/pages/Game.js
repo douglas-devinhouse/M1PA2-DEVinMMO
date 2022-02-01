@@ -19,14 +19,15 @@ export const Game = () => {
         }, []);   
 
     console.log(detalhe);
-    console.log("detalhe.screenshots: ", detalhe.screenshots);
+    // console.log("detalhe.screenshots: ", detalhe.screenshots);
 
         
     return(
         <>                        
             {/* <GameHeader gameTitle={detalhe.title}/> */}
-            <FeaturedGame game={detalhe}/>
-            {/* <SlideShow screenshots={detalhe.screenshots}/> */}
+            {/* <FeaturedGame game={detalhe}/> */}
+            {/* <SlideShow gameInfo={detalhe} screenshots={detalhe.screenshots}/> */}
+            <SlideShow gameInfo={detalhe}/>
             <img src={detalhe.thumbnail} alt={detalhe.title}></img>            
             <p>{detalhe.short_description}</p>
             

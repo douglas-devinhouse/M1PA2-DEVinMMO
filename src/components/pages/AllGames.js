@@ -13,7 +13,7 @@ const AllGames = () => {
       elementoTopo.current.scrollIntoView({ behavior: 'smooth' });
   };  
   
-  const [theme, setTheme] = usePersistedState('theme', ligth);
+  const [theme, setTheme] = usePersistedState('theme', dark);
   const toggleTheme = () => {
     setTheme(theme.title === 'ligth' ? dark : ligth);
   }
