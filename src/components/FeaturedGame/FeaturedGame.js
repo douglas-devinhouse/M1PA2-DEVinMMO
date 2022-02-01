@@ -19,8 +19,7 @@ const FeaturedGame = ({title, developer, releaseDate, genre, description, minReq
                             <FeaturedGenre>{genre}</FeaturedGenre>
                         </FeaturedInfo>
 
-                        <FeaturedDescription>{description}</FeaturedDescription>
-                        <FeaturedButtom href={gameUrl}>Oficial Page</FeaturedButtom>
+                        <FeaturedDescription>{description}</FeaturedDescription>                       
                                                 
                         <FeaturedRequirements>
                             <h3>Minimum System Requirements</h3>
@@ -30,6 +29,8 @@ const FeaturedGame = ({title, developer, releaseDate, genre, description, minReq
                             <p>Processor: {minRequirements.processor}</p>
                             <p>Storage: {minRequirements.storage}</p>
                         </FeaturedRequirements>
+
+                        <FeaturedButtom href={gameUrl}>Oficial Page</FeaturedButtom>
                     </section>
                 </FeaturedHorizontal>
             </FeaturedVertical>

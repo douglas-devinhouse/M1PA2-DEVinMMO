@@ -12,7 +12,7 @@ export const FeaturedVertical = styled.div`
 `;
 
 export const FeaturedHorizontal = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 150%;
     background: linear-gradient(to right, #111 25%, transparent 75%);
 `;

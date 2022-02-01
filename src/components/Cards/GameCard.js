@@ -10,9 +10,7 @@ export const GameCard = ({ game }) => {
             <GameCardImg>
               <img src={game.thumbnail} alt={game.title} />
             </GameCardImg>
-          </Link>
-          {/* <a href={game.game_url}><img src={game.thumbnail} alt={game.title} /></a> */}
-          {/* <h1>{game.title}</h1> */}
+          </Link>          
         </div>
       </GameCardStyle>                
     
