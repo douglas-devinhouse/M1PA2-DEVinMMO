@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const FeaturedStyle = styled.div`
     height: 100vh;
-    position: absolute;    
+    position: absolute;
+    margin-top: 60px;
 `;
 
 export const FeaturedVertical = styled.div`
@@ -77,4 +78,5 @@ export const FeaturedRequirements = styled.div`
     margin: 50px 0 0 45px;
     font-size: 18px;
     color: #999;
+    max-width: 45%;
 `;

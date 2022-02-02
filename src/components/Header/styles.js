@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import logo from '../../images/logo_transp.png';
 
-export const Container = styled.div`
+export const HeaderContainer = styled.header`
     height: 60px;
     background: ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors.secundary};
@@ -9,10 +9,14 @@ export const Container = styled.div`
     align-items: center;
     padding: 0 30px;
     justify-content: space-between;
-`;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;        
+    .tranparent{
 
-export const MasterHeaderTitle = styled.h1`
-    color: ;
+    }
 `;
 
 export const Logo = styled.img`    

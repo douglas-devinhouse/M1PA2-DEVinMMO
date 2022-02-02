@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { GameCardImg, GameCardStyle } from "../../styles/GameCard.styles";
+import { GameCardImg, GameCardStyle } from "./GameCard.styles";
 
 export const GameCard = ({ game }) => {    
   return (      

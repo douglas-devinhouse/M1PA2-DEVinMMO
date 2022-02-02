@@ -10,7 +10,7 @@ export const Game = () => {
 
     useEffect(() => {
         const loadGame = async () => {
-            let gameDetalhe = await fetchGame.getGameInfo(gameId);            
+            let gameDetalhe = await fetchGame.getGameInfo(gameId);
             setDetalhe(gameDetalhe);
             setListScreenshots(gameDetalhe.screenshots);
         }
@@ -19,15 +19,18 @@ export const Game = () => {
 
     if(listScreenshots.length === 0) {
         return(
-            <>  
-                <br />         
-                <img src={detalhe.thumbnail} alt={detalhe.title}></img>
-                <br /><br />
-                <h3>{detalhe.short_description}</h3>
-            </>        
+            <>            
+            <br />         
+            <img src={detalhe.thumbnail} alt={detalhe.title}></img>
+            <br /><br />
+            <h3>{detalhe.short_description}</h3>            
+            </>
         );        
     } else {
-        return <SlideShow gameInfo={detalhe}/>
-        
+        return (
+            <>            
+            <SlideShow gameInfo={detalhe}/>
+            </>
+        );
     };      
 };

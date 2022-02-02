@@ -1,9 +1,6 @@
 import React, { useRef } from 'react';
-import { useNews } from '../../contexts/news';
-import { dark, ligth } from '../../styles/themes';
-import { usePersistedState } from '../../utils/usePersistedState';
+import { useNews } from '../../contexts/newsContext';
 import { NewsCard } from '../Cards/NewsCard';
-import { Header } from '../Header/Header';
 
 const AllNews = () => {
   const elementoTopo = useRef();
@@ -12,17 +9,12 @@ const AllNews = () => {
   const handleBackToTop = () => {
       elementoTopo.current.scrollIntoView({ behavior: 'smooth' });
   };  
-  
-  const [theme, setTheme] = usePersistedState('theme', ligth);
-  const toggleTheme = () => {
-    setTheme(theme.title === 'ligth' ? dark : ligth);
-  }
 
   return (
-  <>
-    <Header toggleTheme={toggleTheme} pageTitle={'News'}/>
+  <>    
+    {/* <MasterHeader  pageTitle='News'/> */}
     <div ref={elementoTopo}>
-      <div >
+      <div style={{margin:"60px 0 0 60px"}}>
         {newsFiltrados.length === 0
           ? 'Nenhuma notícia encontrada'
           : newsFiltrados.map((news, key) => 

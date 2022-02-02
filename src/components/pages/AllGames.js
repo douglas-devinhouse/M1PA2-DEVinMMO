@@ -1,9 +1,6 @@
 import React, { useRef } from 'react';
-import { useGame } from '../../contexts/game';
-import { dark, ligth } from '../../styles/themes';
-import { usePersistedState } from '../../utils/usePersistedState';
+import { useGame } from '../../contexts/gameContext';
 import { GameCard } from '../Cards/GameCard';
-import { Header } from '../Header/Header';
 
 const AllGames = () => {
   const elementoTopo = useRef();
@@ -11,18 +8,13 @@ const AllGames = () => {
 
   const handleBackToTop = () => {
       elementoTopo.current.scrollIntoView({ behavior: 'smooth' });
-  };  
-  
-  const [theme, setTheme] = usePersistedState('theme', dark);
-  const toggleTheme = () => {
-    setTheme(theme.title === 'ligth' ? dark : ligth);
-  }
+  };
 
   return (
-  <>
-    <Header toggleTheme={toggleTheme} pageTitle={'Games'}/>
+  <>    
+    {/* <MasterHeader  pageTitle='Games'/> */}    
     <div ref={elementoTopo}>
-      <div >
+      <div style={{margin:"60px 0 0 60px"}}>
         {gamesFiltrados.length === 0
           ? 'Nenhum game encontrado'
           : gamesFiltrados.map((game, key) => 
@@ -30,7 +22,7 @@ const AllGames = () => {
           }        
       </div>      
       <button onClick={handleBackToTop}>Voltar para o topo</button>
-    </div>
+    </div>    
   </>
   );
 };

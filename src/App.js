@@ -3,8 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Router } from './routes/Routes';
 
 import { ThemeProvider } from "styled-components";
-import { GameProvider } from './contexts/game';
-import { NewsProvider } from './contexts/news';
+import { GameProvider } from './contexts/gameContext';
+import { NewsProvider } from './contexts/newsContext';
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { MasterHeader } from "./components/Header/MasterHeader";
 import { dark, ligth} from './styles/themes';
