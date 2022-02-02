@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import Switch from "react-switch";
-import {Container, Happy, Logo, Zombie} from './styles';
+import {Container, Logo} from './styles';
 import { ThemeContext } from 'styled-components';
 
 export const MasterHeader = ({toggleTheme}) => {
   const { colors, title } = useContext(ThemeContext);  
   
     return (
+        <header>
         <Container>            
             <Logo />
+            <h1>DEVinMMO</h1>
             <div>                                
                 <Switch 
                     onChange={toggleTheme}
@@ -16,7 +18,8 @@ export const MasterHeader = ({toggleTheme}) => {
                     checkedIcon={false}
                     uncheckedIcon={false}
                     height={30}
-                    width={60}                    
+                    width={60}
+                    onColor={colors.switchOn}
 
                     checkedHandleIcon={
                         <div
@@ -30,7 +33,7 @@ export const MasterHeader = ({toggleTheme}) => {
                             paddingRight: 2
                           }}
                         >
-                          <img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-moon-space-prettycons-lineal-color-prettycons.png"/>
+                          <img alt='Dark Mode' src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-moon-space-prettycons-lineal-color-prettycons.png"/>
                         </div>
                     }
                     uncheckedHandleIcon={
@@ -45,11 +48,12 @@ export const MasterHeader = ({toggleTheme}) => {
                             paddingRight: 2
                           }}
                         >
-                          <img src="https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-sun-weather-justicon-flat-justicon-1.png"/>
+                          <img alt='Light Mode' src="https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-sun-weather-justicon-flat-justicon-1.png"/>
                         </div>
                     }                    
                 />                
-            </div>
+            </div>            
         </Container>
+        </header>
     )
 };

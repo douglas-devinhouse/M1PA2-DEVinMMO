@@ -2,9 +2,10 @@ import React from "react";
 import { FeaturedHorizontal, FeaturedStyle, FeaturedVertical, FeaturedTitle, 
          FeaturedInfo, FeaturedDeveloper, FeaturedRelease, FeaturedGenre,
          FeaturedDescription, FeaturedButtom, FeaturedRequirements } from "./FeaturedGame.styles";
+import { FeaturedGameRequirements } from "./FeaturedGameRequirements";
 
 const FeaturedGame = ({title, developer, releaseDate, genre, description, minRequirements, gameUrl}) => {
-    let firstRelease = new Date(releaseDate);     
+    let firstRelease = new Date(releaseDate);   
     
     return (
         <>        
@@ -20,15 +21,16 @@ const FeaturedGame = ({title, developer, releaseDate, genre, description, minReq
                         </FeaturedInfo>
 
                         <FeaturedDescription>{description}</FeaturedDescription>                       
-                                                
-                        <FeaturedRequirements>
+                        <FeaturedGameRequirements requirements={minRequirements}/> 
+
+                        {/* <FeaturedRequirements>
                             <h3>Minimum System Requirements</h3>
                             <p>OS: {minRequirements.os}</p>
                             <p>Graphics: {minRequirements.graphics}</p>
                             <p>Memory: {minRequirements.memory}</p>
                             <p>Processor: {minRequirements.processor}</p>
                             <p>Storage: {minRequirements.storage}</p>
-                        </FeaturedRequirements>
+                        </FeaturedRequirements> */}
 
                         <FeaturedButtom href={gameUrl}>Oficial Page</FeaturedButtom>
                     </section>

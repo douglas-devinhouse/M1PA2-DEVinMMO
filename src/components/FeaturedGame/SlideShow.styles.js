@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const SlideShowStyle = styled.div`
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;  
-  position: relative;    
-  height: 100px;
+  height: 87vh;  
+`;
+
+export const SlideShowImage = styled.div`
+  object-fit: "cover";
+  width: "100%";
+  height: "100%";                
 `;
