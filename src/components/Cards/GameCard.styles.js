@@ -13,6 +13,6 @@ export const GameCardImg = styled.div`
     transition: all ease 0.2s;
 
     :hover {
-        transform: scale(1);
+        transform: scale(1);        
     } 
 `;

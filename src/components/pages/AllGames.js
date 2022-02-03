@@ -12,10 +12,11 @@ const AllGames = () => {
   };
 
   return (
-  <>
+  <>      
     <Search searchType="games"/>
+    
     <div ref={elementoTopo}>
-      <div style={{margin:"110px 0 0 8px", width:"100vw",}}>
+      <div style={{margin:"120px 0 0 8px", width:"100vw",}}>
         {gamesFiltrados.length === 0
           ? 'Nenhum game encontrado'
           : gamesFiltrados.map((game, key) => 

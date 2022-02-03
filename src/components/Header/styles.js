@@ -2,8 +2,7 @@ import styled from "styled-components";
 import logo from '../../images/logo_transp.png';
 
 export const HeaderContainer = styled.header`
-    height: 75px;
-    background: ${props => props.theme.colors.primary};
+    height: 75px;    
     color: ${props => props.theme.colors.secundary};
     display: flex;
     align-items: center;
@@ -13,13 +12,15 @@ export const HeaderContainer = styled.header`
     z-index: 999;
     top: 0;
     left: 0;
-    right: 0;
+    right: 0;    
+    background: linear-gradient(to bottom, #333 3%, transparent 97%);
 
     .LinkTO {
         cursor: pointer;
-        width: 120px;
-        text-align: center;
-        margin: 0 0 0 45px;        
+        height: 50px;
+        width: 120px;        
+        text-align: center;                
+        margin: 0 0 0 10px;        
         display: inline-block;
         font-size: 20px;
         font-weight: bold;
@@ -40,23 +41,45 @@ export const HeaderContainer = styled.header`
 export const Logo = styled.img`    
     height: 48px;
     width: 96px; 
+    margin: 15px 0 0 10px;
 `;
 
-Logo.defaultProps = {
+Logo.defaultProps = {  
   src: logo,  
 };
 
+
 export const HeaderSearch = styled.header`    
-    top: 75px;
-    height: 35px;   
+    top: 85px;
+    height: 30px;   
     display: inline-flex;    
     position: fixed;
     z-index: 999;
-
+    
     .InputSearch{
-        width: 100vw;
-        height: 100%;
+        margin-left: 25px;
+        padding: 10 0 10 0;
         font-size: 20px;
         font-weight: 700;
     }
 `;
+
+// export const HeaderSearch = styled.header`
+//     /* background: linear-gradient(to bottom, transparent);     */
+//     background: transparent;
+//     display: flex;
+//     top: 80px;    
+       
+//     position: fixed;
+//     z-index: 999;
+
+//     /* fixado manualmente flutuante na header principal
+//     display: block;
+//     margin-right: 22%;
+//     margin-left: 78%;     */
+
+//     .InputSearch{        
+//         font-size: 20px;
+//         font-weight: 700; 
+//     }
+// `;

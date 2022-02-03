@@ -10,8 +10,8 @@ export const Search = ({searchType}) => {
   if(searchType === 'games' || searchType === 'news') {
     return (
       <>
-        <HeaderSearch >          
-          <div>
+        <HeaderSearch >
+          <div style={{width: "100%"}}>
             <input className='InputSearch'
               onChange={(event) => {
                 searchType === 'games' ?
@@ -20,7 +20,7 @@ export const Search = ({searchType}) => {
               }}                
               type="text"
               placeholder="Pesquisar"
-            />
+            />              
           </div>
         </HeaderSearch>
       </>

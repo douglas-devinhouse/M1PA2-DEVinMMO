@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import FeaturedGame from './FeaturedGame';
-import { SlideShowStyle, SlideShowImage } from './SlideShow.styles';
+import { SlideShowStyle } from './SlideShow.styles';
 
 export const SlideShow = ({gameInfo}) => {
   let screenchostList = [];
@@ -25,20 +25,17 @@ export const SlideShow = ({gameInfo}) => {
             releaseDate={gameInfo.release_date}
             genre={gameInfo.genre} 
             description={gameInfo.short_description}                         
-            minRequirements={gameInfo.minimum_system_requirements}
-            // minRequirements={minRequirements}
+            minRequirements={gameInfo.minimum_system_requirements}            
             gameUrl={gameInfo.game_url}
           />
-          <SlideShowStyle > 
-            <SlideShowImage>
+          <SlideShowStyle >             
               <img alt={`Imagem ${key}`} src={img} 
-                style={{                 
+                style={{                  
                   objectFit: "cover", 
                   width: "100%",
-                  height: "100%"
+                  height: "100vh"
                 }}
-              />
-            </SlideShowImage>
+              />            
           </SlideShowStyle>
           </>
         ))}

@@ -15,7 +15,7 @@ const AllNews = () => {
   <>    
     <Search searchType="news"/>
     <div ref={elementoTopo}>
-      <div style={{margin:"60px 0 0 60px"}}>
+      <div style={{margin:"120px 0 0 60px"}}>
         {newsFiltrados.length === 0
           ? 'Nenhuma notícia encontrada'
           : newsFiltrados.map((news, key) => 
