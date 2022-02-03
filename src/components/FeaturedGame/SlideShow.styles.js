@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SlideShowStyle = styled.div`
-  height: 87vh;  
+  height: 93vh;  
 `;
 
 export const SlideShowImage = styled.div`

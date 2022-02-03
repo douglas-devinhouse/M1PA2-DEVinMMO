@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './routes/Routes';
 
@@ -12,7 +11,7 @@ import { usePersistedState } from "./utils/usePersistedState";
 
 function App() {   
 
-  const [theme, setTheme] = usePersistedState('theme', ligth);
+  const [theme, setTheme] = usePersistedState('theme', dark);
   const toggleTheme = () => {
     setTheme(theme.title === 'ligth' ? dark : ligth);
   }
@@ -22,8 +21,7 @@ function App() {
       <GameProvider >
       <NewsProvider >
         <div className="App"> 
-            <GlobalStyles />
-            
+            <GlobalStyles />            
             <BrowserRouter>
               <MasterHeader toggleTheme={toggleTheme}/>              
               <Router />

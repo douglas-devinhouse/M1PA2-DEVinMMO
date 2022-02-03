@@ -6,13 +6,13 @@ import { PageNotFound } from '../components/pages/pageNotFound';
 
 export const LinkGames = () => {
     return(
-        <Link to="/games">Games</Link>
+        <Link className="LinkTO" to="/games">Games</Link>
     );
 };
 
 export const LinkNews = () => {
     return(
-        <Link to="/news">News</Link>
+        <Link className="LinkTO" to="/news">News</Link>
     );
 };
 

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useNews } from '../../contexts/newsContext';
 import { NewsCard } from '../Cards/NewsCard';
+import { Search } from '../Header/Search';
 
 const AllNews = () => {
   const elementoTopo = useRef();
@@ -12,7 +13,7 @@ const AllNews = () => {
 
   return (
   <>    
-    {/* <MasterHeader  pageTitle='News'/> */}
+    <Search searchType="news"/>
     <div ref={elementoTopo}>
       <div style={{margin:"60px 0 0 60px"}}>
         {newsFiltrados.length === 0
