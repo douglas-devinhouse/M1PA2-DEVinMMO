@@ -8,7 +8,7 @@ export const GameCard = ({ game }) => {
         <div key={game.id}>
           <Link to={`/game/${game.id}`}>
             <GameCardImg>
-              <img src={game.thumbnail} alt={game.title} />
+              <img src={game.thumbnail} alt={game.title}/>
             </GameCardImg>
           </Link>          
         </div>

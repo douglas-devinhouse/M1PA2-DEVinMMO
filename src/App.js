@@ -23,8 +23,9 @@ function App() {
       <NewsProvider >
         <div className="App"> 
             <GlobalStyles />
-            <MasterHeader toggleTheme={toggleTheme}/>
+            
             <BrowserRouter>
+              <MasterHeader toggleTheme={toggleTheme}/>              
               <Router />
             </BrowserRouter>
           </div>

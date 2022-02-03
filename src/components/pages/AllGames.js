@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useGame } from '../../contexts/gameContext';
 import { GameCard } from '../Cards/GameCard';
+import { Search } from '../Header/Search';
 
 const AllGames = () => {
   const elementoTopo = useRef();
@@ -13,8 +14,9 @@ const AllGames = () => {
   return (
   <>    
     {/* <MasterHeader  pageTitle='Games'/> */}    
+    <Search searchType="games"/>
     <div ref={elementoTopo}>
-      <div style={{margin:"60px 0 0 60px"}}>
+      <div style={{margin:"80px 0 0 8px", width:"100vw",}}>
         {gamesFiltrados.length === 0
           ? 'Nenhum game encontrado'
           : gamesFiltrados.map((game, key) => 

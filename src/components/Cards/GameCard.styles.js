@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const GameCardStyle = styled.div`
     display: inline-block;
+    
     width: 350px;
     padding: 0px 0px 0px 0px;    
 `;

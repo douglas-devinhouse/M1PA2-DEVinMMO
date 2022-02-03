@@ -2,16 +2,21 @@ import React, { useContext } from 'react';
 import Switch from "react-switch";
 import {HeaderContainer, Logo} from './styles';
 import { ThemeContext } from 'styled-components';
-import { Search } from './Search';
+
+import { LinkGames, LinkNews } from '../../routes/Routes';
+
 
 export const MasterHeader = ({toggleTheme, pageTitle, transparent}) => {
   const { colors, title } = useContext(ThemeContext);     
-    
+  
   return (    
     <HeaderContainer>
-        <Logo />
-        <h1>DEVinMMO</h1>
-        <Search />
+        <div>
+        <Logo /> <h2>DEVinMMO</h2>
+        </div>
+        <LinkGames/>
+        <LinkNews/>
+        
         <div>
             <Switch 
                 onChange={toggleTheme}
