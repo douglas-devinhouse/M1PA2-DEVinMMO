@@ -1,49 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { usePersistedState } from "../../../utils/usePersistedState";
 
 export const GameComments = ({ gameId }) => {
-  console.log(gameId);
   let key = `commentsOfGame_${gameId}`;
-  const actualStorageGameComments = localStorage.getItem(key);
-
-  const [storageGameComments, setStorageGameComments] = usePersistedState(key, actualStorageGameComments);
-  const [commentsId, setCommentsId] = useState(0);
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    setCommentsId(commentsId + 1);
-    console.log(commentsId);
-
-    setStorageGameComments(JSON.stringify(values, null, 2));
-    /** preciso cirar no storage um json
-     * [{...},{...},{...},{...},{...},]
-     *
-     * onde:
-     *
-     * 0 {id: 1, name: 'douglas', email:'aaa@aaa.aaa', comment:'aaaaaaaaaa a aa a a a a a'},
-     * 1 {id: 2, name: 'virginia', email:'bbbb@bbb.bbb', comment:'bbbbbbbbbb b bb b b b b b'},
-     * 2 {id: 3, name: 'maria', email:'cccc@ccc.ccc', comment:'cccccccccc c cc c c c c c'},
-     *
-     * */
+    let list = [];
+    const actualStorageValue = localStorage.getItem(key);
+    if (actualStorageValue) {
+      let actualListStored = JSON.parse(actualStorageValue);
+      for (let itemStored in actualListStored) {
+        list.push(actualListStored[itemStored]);
+      }
+    }
+    list.push(values);
+    localStorage.setItem(key, JSON.stringify(list));
 
     setSubmitting(false);
     resetForm();
-
-    //simulando a chamada para api com setTimeout
-    // console.log("ActionsXXX: ", actions);
-    // setTimeout(() => {
-    //   alert(JSON.stringify(values, null, 2));
-    //   setSubmitting(false);
-    //   resetForm();
-    // }, 500);
-
-    /*
-        MINHA IDÉIA É USAR UM useState PARA CRIAR UM JSON VAZIO NO STORAGE E ENTÃO
-        
-        PEGAR ESSE JSON DO FORM E SETAR O STATE DO JSON ANTIGO
-    */
-    /** ao fazer o submit: deverá salvar no localstorage e limpar o form */
   };
 
   const initialFormValues = {

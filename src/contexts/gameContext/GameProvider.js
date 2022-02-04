@@ -12,7 +12,7 @@ export const GameProvider = ({ children }) => {
     // IIFE Imediately Invoked Function Expression
     (async () => {
       const lista = await fetchAllGames.getAllGames();
-      console.log(lista);
+      // console.log(lista);
       games.current = lista;
       setGamesFiltrados(filtrarListaGamesPorTermoBusca(games.current, termoBuscaGame));
     })();
