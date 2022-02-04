@@ -29,7 +29,7 @@ export const NewsTitle = styled.h2`
     color: #bee6fd;
 `;
 
-export const NewsUrlButton = styled.button`
+export const NewsUrlButton = styled.a`
     cursor: pointer;
     margin: 50px 0 0 45px;
     display: inline-block;

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import FeaturedGame from './FeaturedGame';
 import { SlideShowStyle } from './SlideShow.styles';
 
 export const SlideShow = ({gameInfo}) => {
+  // console.log(gameInfo.screenshots);
   let screenchostList = [];
     for(let i in gameInfo.screenshots){
       screenchostList.push(gameInfo.screenshots[i].image);
@@ -17,8 +18,10 @@ export const SlideShow = ({gameInfo}) => {
   return (
     <div>      
       <Fade {...fadeProperties}>
-        {screenchostList.length > 0 && screenchostList.map((img, key) => (
+        {screenchostList.length > 0 && screenchostList.map((img, key) => (          
           <>
+          {/* Não entendi o motivo do warning referente à key */}
+          {/* {console.log("KEY: ",key)} */}
           <FeaturedGame  
             title={gameInfo.title} 
             developer={gameInfo.developer} 
@@ -26,7 +29,7 @@ export const SlideShow = ({gameInfo}) => {
             genre={gameInfo.genre} 
             description={gameInfo.short_description}                         
             minRequirements={gameInfo.minimum_system_requirements}            
-            gameUrl={gameInfo.game_url}
+            gameUrl={gameInfo.game_url}            
           />
           <SlideShowStyle >             
               <img alt={`Imagem ${key}`} src={img} 

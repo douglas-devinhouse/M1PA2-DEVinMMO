@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const FeaturedStyle = styled.div`
     height: 100vh;
-    position: absolute;
-    /* margin-top: 60px; */
+    position: absolute;    
 `;
 
 export const FeaturedVertical = styled.div`
@@ -19,14 +18,14 @@ export const FeaturedHorizontal = styled.div`
 `;
 
 export const FeaturedTitle = styled.div`
-    padding: 150px 0px 0px 45px;
+    padding: 100px 0px 0px 45px;
     font-size: 3em;
     font-weight: bold;
     color: #FFF;
 `;
 
 export const FeaturedInfo = styled.div`
-    padding: 30px 0px 0px 45px;
+    padding: 10px 0px 0px 45px;
     font-size: 1.5em;
     font-weight: bold;
     color: #FFF;
@@ -50,22 +49,22 @@ export const FeaturedGenre = styled.div`
 
 export const FeaturedDescription = styled.div`
     margin: 30px 0 0px 45px;
-    font-size: 1.8em;
+    font-size: 1.5em;
     color: #999;
     max-width: 45%;
 `;
 
 export const FeaturedButtom = styled.a`
     cursor: pointer;
-    margin: 50px 0 0 45px;
+    margin: 20px 0 0 45px;
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
-    padding: 15px 25px;
+    padding: 5px 15px;
     border-radius: 5px;
     text-decoration: none;    
-    background-color: #FFF;
-    color: #333;
+    background-color: #46d369;
+    color: #111;
     
     opacity: 1;
     transition: all ease 0.2s;
@@ -75,8 +74,8 @@ export const FeaturedButtom = styled.a`
 `;
 
 export const FeaturedRequirements = styled.div`
-    margin: 50px 0 0 45px;
-    font-size: 1.5em;
+    margin: 40px 0 0 45px;
+    font-size: 1.2em;
     color: #999;
     max-width: 45%;
 `;
