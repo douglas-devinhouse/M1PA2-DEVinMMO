@@ -19,8 +19,6 @@ export const Game = () => {
     loadGame();
   }, []);
 
-  // console.log(detalhe);
-
   if (listScreenshots.length === 0) {
     return (
       <>

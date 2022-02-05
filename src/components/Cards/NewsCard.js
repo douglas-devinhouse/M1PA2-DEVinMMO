@@ -1,8 +1,6 @@
 import { NewsCardImg, NewsCardStyle, NewsContentArea, NewsTitle, NewsUrlButton } from "./NewsCard.styles";
 
 export const NewsCard = ({ news }) => {
-  console.log(news);
-
   return (
     <NewsCardStyle>
       <NewsCardImg>

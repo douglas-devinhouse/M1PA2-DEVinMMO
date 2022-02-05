@@ -1,12 +1,12 @@
 export const ligth = {
-    title: 'ligth',
+  title: "ligth",
 
-    colors: {
-        primary: '#A39B8B', //claro
-        secundary: '#33312e', // escuro
-        background: '#A39B8B',
-        switchOn: '#FFF4EC',
-        switchOff: '#333',
-        text: '#111',
-    },
+  colors: {
+    primary: "##D3D5D4", //claro
+    secundary: "#33312e", // escuro
+    background: "#A39B8B",
+    switchOn: "#FFF4EC",
+    switchOff: "#333",
+    text: "#111",
+  },
 };

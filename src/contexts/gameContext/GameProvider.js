@@ -4,25 +4,24 @@ import { fetchAllGames } from "../../services/fetchAllGames";
 import { GameContext } from "./GameContext";
 
 export const GameProvider = ({ children }) => {
-  const [termoBuscaGame, setTermoBuscaGame] = useState("");
-  const [gamesFiltrados, setGamesFiltrados] = useState([]);
+  const [searchTermGame, setSearchTermGame] = useState("");
+  const [gamesFiltred, setGamesFiltered] = useState([]);
   const games = useRef([]);
 
   useEffect(() => {
     // IIFE Imediately Invoked Function Expression
     (async () => {
       const lista = await fetchAllGames.getAllGames();
-      // console.log(lista);
       games.current = lista;
-      setGamesFiltrados(filtrarListaGamesPorTermoBusca(games.current, termoBuscaGame));
+      setGamesFiltered(filtrarListaGamesPorTermoBusca(games.current, searchTermGame));
     })();
     // :)
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    setGamesFiltrados(filtrarListaGamesPorTermoBusca(games.current, termoBuscaGame));
-  }, [termoBuscaGame]);
+    setGamesFiltered(filtrarListaGamesPorTermoBusca(games.current, searchTermGame));
+  }, [searchTermGame]);
 
-  return <GameContext.Provider value={{ setTermoBuscaGame, games, gamesFiltrados }}>{children}</GameContext.Provider>;
+  return <GameContext.Provider value={{ setSearchTermGame, games, gamesFiltred }}>{children}</GameContext.Provider>;
 };
