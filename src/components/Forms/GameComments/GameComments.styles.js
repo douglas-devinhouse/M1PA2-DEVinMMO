@@ -37,6 +37,16 @@ export const GameCommentFormStyle = styled.div`
     align-items: flex-start;
     display: flexbox;
   }
+
+  .input--vote {
+    width: 30px;
+  }
+`;
+
+export const RateArea = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: -12px;
 `;
 
 export const FormButton = styled.button`

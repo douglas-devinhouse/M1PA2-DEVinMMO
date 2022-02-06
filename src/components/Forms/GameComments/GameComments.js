@@ -9,6 +9,7 @@ import {
   ListCommentsStyle,
 } from "./GameComments.styles";
 import TextArea from "./Textarea";
+import { GameVote } from "./GameVote";
 
 const ItemComments = ({ item }) => {
   return (
@@ -32,28 +33,24 @@ const LoadComments = (parsedActualListStored) => {
     }
   }
   return (
-    <>
-      <div>
-        <ListCommentsStyle>
-          {parsedActualListStored.actualStorageValue.length > 0 &&
-            parsedActualListStored.actualStorageValue.map((item) => (
-              <>
-                <CommentaryItemList>
-                  <div style={{ marginRight: "15px" }}>
-                    <img
-                      alt=""
-                      src="https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/000000/external-joystick-computer-xnimrodx-lineal-gradient-xnimrodx.png"
-                    />
-                  </div>
-                  <div>
-                    <ItemComments item={item} />
-                  </div>
-                </CommentaryItemList>
-              </>
-            ))}
-        </ListCommentsStyle>
-      </div>
-    </>
+    <div>
+      <ListCommentsStyle>
+        {parsedActualListStored.actualStorageValue.length > 0 &&
+          parsedActualListStored.actualStorageValue.map((item) => (
+            <CommentaryItemList>
+              <div style={{ marginRight: "15px" }}>
+                <img
+                  alt=""
+                  src="https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/000000/external-joystick-computer-xnimrodx-lineal-gradient-xnimrodx.png"
+                />
+              </div>
+              <div>
+                <ItemComments item={item} />
+              </div>
+            </CommentaryItemList>
+          ))}
+      </ListCommentsStyle>
+    </div>
   );
 };
 
@@ -67,6 +64,8 @@ export const GameComments = ({ gameId }) => {
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     let list = [];
+
+    console.log(values);
 
     if (parsedActualListStored) {
       for (let itemStored in parsedActualListStored) {
@@ -86,6 +85,7 @@ export const GameComments = ({ gameId }) => {
     Name: "",
     Email: "",
     Comments: "",
+    Vote: "0",
   };
 
   const schemaVerify = Yup.object().shape({
@@ -94,6 +94,8 @@ export const GameComments = ({ gameId }) => {
     Email: Yup.string().email().required(),
 
     Comments: Yup.string().required().min(10).max(500),
+
+    Vote: Yup.string(),
   });
 
   return (
@@ -103,7 +105,7 @@ export const GameComments = ({ gameId }) => {
       <LoadComments actualStorageValue={parsedActualListStored} />
 
       <GameCommentFormStyle>
-        <h1>Rate this game</h1>
+        <h1 style={{ textAlign: "left" }}>Rate this game</h1>
         <Formik
           initialValues={initialFormValues}
           onSubmit={handleSubmit}
@@ -133,7 +135,7 @@ export const GameComments = ({ gameId }) => {
                 </div>
 
                 {/* aqui pretgendo colocar o esquema de ratting */}
-                <p>teste</p>
+                <GameVote name="Vote" />
               </div>
 
               {/* <Field className="text--area" name="Comments" placeholder="Your comments" type="textarea" /> */}
