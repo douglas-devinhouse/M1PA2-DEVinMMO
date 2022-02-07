@@ -1,5 +1,8 @@
 # Segundo Projeto Avaliativo do Curso DEVinhouse - Softplan
 
+A aplicação desse projeto está disponível no heroku através do link: https://devinmmo-dmn.herokuapp.com/games
+
+
 O objetivo deste projeto é avaliar todas as habilidades técnicas (hard skills) adquiridas no primeiro módulo do curso abrangendo as tecnologias 
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
