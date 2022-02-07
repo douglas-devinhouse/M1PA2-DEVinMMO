@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { CommentaryItemList, CommentsContainerStyle, FormButton, GameCommentFormStyle } from "./GameComments.styles";
 import TextArea from "./Textarea";
-import { GameVote } from "./GameVote";
+import { GameVoteField } from "./GameVote";
 
 export const GameComments = ({ gameId }) => {
   const [gameComments, setGameComments] = useState([]);
@@ -118,11 +118,8 @@ export const GameComments = ({ gameId }) => {
                     />
                   </div>
 
-                  {/* aqui pretgendo colocar o esquema de ratting */}
-                  <GameVote name="Vote" />
+                  <GameVoteField name="Vote" label="Vote" id="Vote" />
                 </div>
-
-                {/* <Field className="text--area" name="Comments" placeholder="Your comments" type="textarea" /> */}
 
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <TextArea

@@ -66,23 +66,3 @@ export const HeaderSearch = styled.header`
     font-weight: 700;
   }
 `;
-
-// export const HeaderSearch = styled.header`
-//     /* background: linear-gradient(to bottom, transparent);     */
-//     background: transparent;
-//     display: flex;
-//     top: 80px;
-
-//     position: fixed;
-//     z-index: 999;
-
-//     /* fixado manualmente flutuante na header principal
-//     display: block;
-//     margin-right: 22%;
-//     margin-left: 78%;     */
-
-//     .InputSearch{
-//         font-size: 20px;
-//         font-weight: 700;
-//     }
-// `;
