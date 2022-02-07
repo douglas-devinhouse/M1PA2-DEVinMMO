@@ -13,11 +13,6 @@ export const CommentsContainerStyle = styled.div`
   color: #fff;
 `;
 
-export const ListCommentsStyle = styled.ul`
-  list-style: none;
-  text-align: left;
-`;
-
 export const GameCommentFormStyle = styled.div`
   padding: 15px;
 
@@ -80,7 +75,24 @@ export const FormButton = styled.button`
   }
 `;
 
-export const CommentaryItemList = styled.li`
-  display: flexbox;
-  flex-direction: row;
+export const CommentaryItemList = styled.div`
+  display: flex;
+  border: 2px solid #fff;
+  margin: 3px;
+
+  .comment--profile {
+    min-width: 100px;
+    text-align: left;
+    padding: 5px;
+  }
+
+  .comment--profile--image {
+    width: 32px;
+    height: 32px;
+  }
+
+  .comentary {
+    margin: 10px 10px 10px 15px;
+    text-align: justify;
+  }
 `;

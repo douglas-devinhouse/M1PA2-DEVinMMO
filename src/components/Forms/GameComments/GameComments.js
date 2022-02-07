@@ -1,91 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
-  CommentaryItemList,
-  CommentsContainerStyle,
-  FormButton,
-  GameCommentFormStyle,
-  ListCommentsStyle,
-} from "./GameComments.styles";
+import { CommentaryItemList, CommentsContainerStyle, FormButton, GameCommentFormStyle } from "./GameComments.styles";
 import TextArea from "./Textarea";
 import { GameVote } from "./GameVote";
 
-const ItemComments = ({ item }) => {
-  return (
-    <div style={{ padding: "15px 0" }}>
-      <div>
-        <h3>{item.Name}</h3>
-        {/* exibir aqui o rating */}
-      </div>
-      <article>
-        <p>{item.Comments}</p>
-      </article>
-    </div>
-  );
-};
-
-const LoadComments = (parsedActualListStored) => {
-  let list = [];
-  if (parsedActualListStored) {
-    for (let itemStored in parsedActualListStored) {
-      list.push(parsedActualListStored[itemStored]);
-    }
-  }
-  return (
-    <div>
-      <ListCommentsStyle>
-        {parsedActualListStored.actualStorageValue.length > 0 &&
-          parsedActualListStored.actualStorageValue.map((item) => (
-            <CommentaryItemList>
-              <div style={{ marginRight: "15px" }}>
-                <img
-                  alt=""
-                  src="https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/000000/external-joystick-computer-xnimrodx-lineal-gradient-xnimrodx.png"
-                />
-              </div>
-              <div>
-                <ItemComments item={item} />
-              </div>
-            </CommentaryItemList>
-          ))}
-      </ListCommentsStyle>
-    </div>
-  );
-};
-
 export const GameComments = ({ gameId }) => {
-  let key = `commentsOfGame_${gameId}`;
-  const actualStorageValue = localStorage.getItem(key);
-  let parsedActualListStored = [];
-  if (actualStorageValue) {
-    parsedActualListStored = JSON.parse(actualStorageValue);
-  }
+  const [gameComments, setGameComments] = useState([]);
+  useEffect(() => {
+    const commentsStorage = localStorage.getItem("GAME_COMMENTS");
+    if (commentsStorage) {
+      const items = JSON.parse(commentsStorage);
+      const filter = items.find((item) => item.id === gameId);
+      setGameComments(filter);
+    }
+  }, [gameId]);
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    let list = [];
+    console.log({ ...values });
+    const commentsStorage = localStorage.getItem("GAME_COMMENTS");
 
-    console.log(values);
+    const item = {
+      id: Math.random().toString(16).slice(2),
+      ...values,
+    };
 
-    if (parsedActualListStored) {
-      for (let itemStored in parsedActualListStored) {
-        list.push(parsedActualListStored[itemStored]);
-      }
+    let oldComments = [];
+    if (gameComments?.comments) {
+      oldComments = [...gameComments?.comments];
     }
 
-    list.push(values);
-    localStorage.setItem(key, JSON.stringify(list));
+    const newItems = [{ id: gameId, comments: [...oldComments, item] }];
+    setGameComments(...newItems);
+
+    if (commentsStorage) {
+      const items = JSON.parse(commentsStorage);
+      const newList = items.filter((item) => item.id !== gameId);
+      localStorage.setItem("GAME_COMMENTS", JSON.stringify([...newList, ...newItems]));
+    } else {
+      localStorage.setItem("GAME_COMMENTS", JSON.stringify(newItems));
+    }
 
     setSubmitting(false);
     resetForm();
-    <LoadComments actualStorageValue={parsedActualListStored} />;
   };
 
   const initialFormValues = {
     Name: "",
     Email: "",
     Comments: "",
-    Vote: "0",
+    Vote: 0,
   };
 
   const schemaVerify = Yup.object().shape({
@@ -95,73 +59,94 @@ export const GameComments = ({ gameId }) => {
 
     Comments: Yup.string().required().min(10).max(500),
 
-    Vote: Yup.string(),
+    Vote: Yup.number(),
   });
 
   return (
-    <CommentsContainerStyle>
-      <h1>Comments and Ratings</h1>
+    <>
+      <CommentsContainerStyle>
+        <h1>Comments and Ratings</h1>
 
-      <LoadComments actualStorageValue={parsedActualListStored} />
+        {gameComments?.comments?.map((item) => (
+          <>
+            <CommentaryItemList>
+              <div className="comment--profile">
+                <div>
+                  <h3>{item.Name}</h3>
+                </div>
+                <div>
+                  <img
+                    className="comment--profile--image"
+                    alt=""
+                    src="https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/000000/external-joystick-computer-xnimrodx-lineal-gradient-xnimrodx.png"
+                  />
+                </div>
+              </div>
+              <div className="comentary">
+                <p>{item.Comments}</p>
+              </div>
+            </CommentaryItemList>
+          </>
+        ))}
 
-      <GameCommentFormStyle>
-        <h1 style={{ textAlign: "left" }}>Rate this game</h1>
-        <Formik
-          initialValues={initialFormValues}
-          onSubmit={handleSubmit}
-          validationSchema={schemaVerify}
-          validateOnMount
-        >
-          {({ isSubmitting, isValid }) => (
-            <Form>
-              {console.log(isValid)}
-              <div style={{ display: "flex", flexDirection: "row" }}>
+        <GameCommentFormStyle>
+          <h1 style={{ textAlign: "left" }}>Rate this game</h1>
+          <Formik
+            initialValues={initialFormValues}
+            onSubmit={handleSubmit}
+            validationSchema={schemaVerify}
+            validateOnMount
+          >
+            {({ isSubmitting, isValid }) => (
+              <Form>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <Field className="input--form input--name" name="Name" placeholder="Your name" />
+                    <ErrorMessage
+                      style={{ color: "#E3655B", fontSize: "0.8em", textAlign: "left" }}
+                      component={"span"}
+                      name="Name"
+                    />
+                  </div>
+
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <Field className="input--form input--email" name="Email" placeholder="Your e-mail" />
+                    <ErrorMessage
+                      style={{ color: "#E3655B", fontSize: "0.8em", textAlign: "left" }}
+                      component={"span"}
+                      name="Email"
+                    />
+                  </div>
+
+                  {/* aqui pretgendo colocar o esquema de ratting */}
+                  <GameVote name="Vote" />
+                </div>
+
+                {/* <Field className="text--area" name="Comments" placeholder="Your comments" type="textarea" /> */}
+
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Field className="input--form input--name" name="Name" placeholder="Your name" />
+                  <TextArea
+                    style={{ margin: "8px 0" }}
+                    label="textarea"
+                    rows="5"
+                    name="Comments"
+                    placeholder="Your comments"
+                  />
                   <ErrorMessage
                     style={{ color: "#E3655B", fontSize: "0.8em", textAlign: "left" }}
                     component={"span"}
-                    name="Name"
+                    name="Comments"
                   />
+
+                  <FormButton className="form--button" type="submit" disabled={isSubmitting || !isValid}>
+                    Send
+                  </FormButton>
                 </div>
-
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Field className="input--form input--email" name="Email" placeholder="Your e-mail" />
-                  <ErrorMessage
-                    style={{ color: "#E3655B", fontSize: "0.8em", textAlign: "left" }}
-                    component={"span"}
-                    name="Email"
-                  />
-                </div>
-
-                {/* aqui pretgendo colocar o esquema de ratting */}
-                <GameVote name="Vote" />
-              </div>
-
-              {/* <Field className="text--area" name="Comments" placeholder="Your comments" type="textarea" /> */}
-
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <TextArea
-                  style={{ margin: "8px 0" }}
-                  label="textarea"
-                  rows="5"
-                  name="Comments"
-                  placeholder="Your comments"
-                />
-                <ErrorMessage
-                  style={{ color: "#E3655B", fontSize: "0.8em", textAlign: "left" }}
-                  component={"span"}
-                  name="Comments"
-                />
-
-                <FormButton className="form--button" type="submit" disabled={isSubmitting || !isValid}>
-                  Send
-                </FormButton>
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </GameCommentFormStyle>
-    </CommentsContainerStyle>
+              </Form>
+            )}
+          </Formik>
+        </GameCommentFormStyle>
+      </CommentsContainerStyle>
+    </>
   );
 };

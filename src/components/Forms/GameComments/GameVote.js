@@ -7,7 +7,7 @@ const initialState = { vote: 0 };
 function reducer(state, action) {
   switch (action.type) {
     case "increment":
-      if (state.vote < 5) {
+      if (state.vote < 10) {
         return { vote: state.vote + 1 };
       } else return { vote: state.vote };
       break;
